@@ -3,6 +3,8 @@
 
 Vagrant.require_version ">= 1.6.3"
 
+require_relative "docker_start_service.rb"
+
 Vagrant.configure("2") do |config|
   # Disable synced folder by default
   config.vm.synced_folder ".", "/vagrant", disabled: true

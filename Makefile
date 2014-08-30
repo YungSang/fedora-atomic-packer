@@ -1,4 +1,8 @@
-fedora-atomic-virtualbox.box: boot.iso template.json vagrantfile.tpl http/atomic-ks.cfg
+fedora-atomic-virtualbox.box: boot.iso box/template.json box/vagrantfile.tpl \
+	box/docker_start_service.rb http/atomic-ks.cfg
+	rm -f fedora-atomic-virtualbox.box
+	rm -rf output-*/
+	@cd box; \
 	packer build -only virtualbox template.json
 
 boot.iso:

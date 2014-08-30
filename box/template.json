@@ -3,9 +3,9 @@
         "name": "virtualbox",
         "type": "virtualbox-iso",
         "guest_os_type": "Fedora_64",
-        "iso_url": "boot.iso",
+        "iso_url": "../boot.iso",
         "iso_checksum_type": "none",
-        "http_directory": "http",
+        "http_directory": "../http",
         "boot_wait": "5s",
         "boot_command": [
             "<esc>",
@@ -39,7 +39,8 @@
 
     "post-processors": [{
         "type": "vagrant",
+        "include": ["docker_start_service.rb"],
         "vagrantfile_template": "vagrantfile.tpl",
-        "output": "fedora-atomic-{{.Provider}}.box"
+        "output": "../fedora-atomic-{{.Provider}}.box"
     }]
 }
