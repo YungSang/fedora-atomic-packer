@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # # vi: set ft=ruby :
 
+Vagrant.require_version ">= 1.6.3"
+
 Vagrant.configure("2") do |config|
   # Disable synced folder by default
   config.vm.synced_folder ".", "/vagrant", disabled: true
