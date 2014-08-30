@@ -1,0 +1,45 @@
+{
+    "builders": [{
+        "name": "virtualbox",
+        "type": "virtualbox-iso",
+        "guest_os_type": "Fedora_64",
+        "iso_url": "boot.iso",
+        "iso_checksum_type": "none",
+        "http_directory": "http",
+        "boot_wait": "5s",
+        "boot_command": [
+            "<esc>",
+            "<wait>",
+            "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/atomic-ks.cfg",
+            "<enter>"
+        ],
+        "ssh_wait_timeout": "10m",
+        "ssh_username": "vagrant",
+        "ssh_password": "vagrant",
+        "shutdown_command": "sudo systemctl poweroff",
+        "guest_additions_mode": "disable",
+        "disk_size": 40000,
+        "vboxmanage": [
+            ["modifyvm", "{{.Name}}", "--memory", "1024"]
+        ]
+    }],
+
+    "provisioners": [{
+        "type": "shell",
+        "inline": [
+            "mkdir -p ~/.ssh",
+            "curl -fsSLo ~/.ssh/authorized_keys https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub",
+            "chmod 700 ~/.ssh/",
+            "chmod 600 ~/.ssh/authorized_keys",
+
+            "dd if=/dev/zero of=EMPTY bs=1M || :",
+            "rm EMPTY"
+        ]
+    }],
+
+    "post-processors": [{
+        "type": "vagrant",
+        "vagrantfile_template": "vagrantfile.tpl",
+        "output": "fedora-atomic-{{.Provider}}.box"
+    }]
+}
