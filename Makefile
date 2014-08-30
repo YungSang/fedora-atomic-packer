@@ -9,6 +9,19 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	@cd test; \
 	vagrant destroy -f; \
 	vagrant up; \
+	echo "-----> /etc/os-release"; \
+	vagrant ssh -c "cat /etc/os-release"; \
+	echo "-----> /etc/redhat-release"; \
+	vagrant ssh -c "cat /etc/redhat-release"; \
+	echo "-----> docker version"; \
+	vagrant ssh -c "sudo docker version"; \
+	echo "-----> docker images -t"; \
+	vagrant ssh -c "sudo docker images -t"; \
+	echo "-----> docker ps -a"; \
+	vagrant ssh -c "sudo docker ps -a"; \
+	echo "-----> nc localhost 8080"; \
+	nc localhost 8080; \
+	vagrant suspend
 
 clean:
 	rm -f boot.iso
