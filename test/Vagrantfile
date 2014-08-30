@@ -7,6 +7,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "fedora-atomic"
 
+  config.vm.network :forwarded_port, guest: 2375, host: 2375
+
   config.vm.provision :docker do |d|
     d.pull_images "yungsang/busybox"
     d.run "simple-echo",
