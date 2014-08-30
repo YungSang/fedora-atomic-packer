@@ -1,5 +1,5 @@
 fedora-atomic-virtualbox.box: boot.iso box/template.json box/vagrantfile.tpl \
-	box/docker_start_service.rb http/atomic-ks.cfg
+	box/docker_start_service.rb box/change_host_name.rb http/atomic-ks.cfg
 	rm -f fedora-atomic-virtualbox.box
 	rm -rf output-*/
 	@cd box; \
@@ -17,6 +17,8 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	vagrant ssh -c "cat /etc/os-release"; \
 	echo "-----> /etc/redhat-release"; \
 	vagrant ssh -c "cat /etc/redhat-release"; \
+	echo "-----> /etc/hostname"; \
+	vagrant ssh -c "cat /etc/hostname"; \
 	DOCKER_HOST="tcp://localhost:2375"; \
 	docker version; \
 	echo "-----> docker images -t"; \

@@ -4,6 +4,7 @@
 Vagrant.require_version ">= 1.6.3"
 
 require_relative "docker_start_service.rb"
+require_relative "change_host_name.rb"
 
 Vagrant.configure("2") do |config|
   # Disable synced folder by default

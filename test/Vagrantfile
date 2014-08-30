@@ -7,6 +7,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "fedora-atomic-test"
 
+  config.vm.hostname = "fedora-atomic-test"
+
   config.vm.box = "fedora-atomic"
 
   config.vm.network :forwarded_port, guest: 2375, host: 2375

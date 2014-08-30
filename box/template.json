@@ -49,7 +49,7 @@
 
     "post-processors": [{
         "type": "vagrant",
-        "include": ["docker_start_service.rb"],
+        "include": ["docker_start_service.rb", "change_host_name.rb"],
         "vagrantfile_template": "vagrantfile.tpl",
         "output": "../fedora-atomic-{{.Provider}}.box"
     }]
