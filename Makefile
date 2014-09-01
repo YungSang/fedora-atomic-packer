@@ -1,6 +1,6 @@
 fedora-atomic-virtualbox.box: boot.iso box/template.json box/vagrantfile.tpl \
 	box/docker_start_service.rb box/change_host_name.rb box/configure_networks.rb \
-	http/atomic-ks.cfg oem/docker.service oem/docker-tcp.socket
+	http/atomic-ks.cfg oem/etc-sysconfig-docker oem/docker-tcp.socket
 	rm -f fedora-atomic-virtualbox.box
 	rm -rf output-*/
 	@cd box; \
