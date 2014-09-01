@@ -7,7 +7,7 @@ Requires=docker.socket
 [Service]
 Type=notify
 EnvironmentFile=-/etc/sysconfig/docker
-ExecStart=/usr/bin/docker -d --storage-opt dm.fs=xfs --selinux-enabled -H fd://
+ExecStart=/usr/local/bin/docker -d --storage-opt dm.fs=xfs --selinux-enabled -H fd://
 Restart=on-failure
 LimitNOFILE=1048576
 LimitNPROC=1048576
