@@ -36,6 +36,11 @@
             "chmod 700 ~/.ssh/",
             "chmod 600 ~/.ssh/authorized_keys",
 
+            "sudo systemctl mask cloud-init.service",
+            "sudo systemctl mask cloud-init-local.service",
+            "sudo systemctl mask cloud-config.service",
+            "sudo systemctl mask cloud-final.service",
+
             "sudo mv /tmp/docker-tcp.socket /etc/systemd/system/",
             "sudo systemctl enable docker-tcp.socket",
             "sudo systemctl start docker-tcp.socket",
