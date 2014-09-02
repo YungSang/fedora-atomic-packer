@@ -32,6 +32,8 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	docker ps -a; \
 	echo "-----> nc localhost 8080"; \
 	nc localhost 8080; \
+	echo "-----> atomic status"; \
+	vagrant ssh -c "atomic status"; \
 	echo "-----> atomic upgrade fedora-atomic:"; \
 	vagrant ssh -c "sudo atomic upgrade fedora-atomic:"; \
 	vagrant suspend
