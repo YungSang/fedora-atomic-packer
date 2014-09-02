@@ -4,3 +4,4 @@ output-*/
 *.box
 *.iso
 .vagrant/
+parallels/
