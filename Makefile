@@ -1,7 +1,7 @@
 fedora-atomic-virtualbox.box: boot.iso box/template.json box/vagrantfile.tpl \
 	box/docker_start_service.rb box/change_host_name.rb box/configure_networks.rb \
 	box/network_static.erb \
-	http/atomic-ks.cfg oem/etc-sysconfig-docker oem/docker-tcp.socket
+	http/atomic-ks.cfg oem/etc-sysconfig-docker oem/docker-tcp.socket oem/oem-release
 	rm -f fedora-atomic-virtualbox.box
 	rm -rf output-*/
 	@cd box; \
@@ -19,6 +19,8 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	vagrant ssh -c "cat /etc/os-release"; \
 	echo "-----> /etc/redhat-release"; \
 	vagrant ssh -c "cat /etc/redhat-release"; \
+	echo "-----> /etc/oem-release"; \
+	vagrant ssh -c "cat /etc/oem-release"; \
 	echo "-----> /etc/hostname"; \
 	vagrant ssh -c "cat /etc/hostname"; \
 	echo "-----> docker version"; \

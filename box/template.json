@@ -31,6 +31,8 @@
     }, {
         "type": "shell",
         "inline": [
+            "sudo mv /tmp/oem-release /etc/",
+
             "mkdir -p ~/.ssh",
             "curl -fsSLo ~/.ssh/authorized_keys https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub",
             "chmod 700 ~/.ssh/",
