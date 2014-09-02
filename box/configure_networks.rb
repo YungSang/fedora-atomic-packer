@@ -33,7 +33,8 @@ module VagrantPlugins
 
             # Render and upload the network entry file to a deterministic
             # temporary location.
-            entry = TemplateRenderer.render("guests/fedora/network_#{network[:type]}",
+            entry = TemplateRenderer.render("network_#{network[:type]}",
+                                            template_root: File.expand_path(File.dirname(__FILE__)),
                                             options: network)
 
             temp = Tempfile.new("vagrant")
