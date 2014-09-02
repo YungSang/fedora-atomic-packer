@@ -20,6 +20,7 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	vagrant ssh -c "cat /etc/redhat-release"; \
 	echo "-----> /etc/hostname"; \
 	vagrant ssh -c "cat /etc/hostname"; \
+	echo "-----> docker version"; \
 	DOCKER_HOST="tcp://localhost:2375"; \
 	docker version; \
 	echo "-----> docker images -t"; \
