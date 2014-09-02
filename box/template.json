@@ -13,7 +13,7 @@
             "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/atomic-ks.cfg",
             "<enter>"
         ],
-        "ssh_wait_timeout": "10m",
+        "ssh_wait_timeout": "60m",
         "ssh_username": "vagrant",
         "ssh_password": "vagrant",
         "shutdown_command": "sudo systemctl poweroff",
@@ -36,17 +36,15 @@
             "chmod 700 ~/.ssh/",
             "chmod 600 ~/.ssh/authorized_keys",
 
-            "curl https://get.docker.io/builds/Linux/x86_64/docker-latest > docker",
-            "chmod +x docker",
-            "sudo mv docker /usr/local/bin/",
-            "sudo chcon -v --reference /usr/bin/docker /usr/local/bin/docker",
+            "sudo systemctl mask cloud-init.service",
+            "sudo systemctl mask cloud-init-local.service",
+            "sudo systemctl mask cloud-config.service",
+            "sudo systemctl mask cloud-final.service",
 
             "sudo mv /tmp/docker-tcp.socket /etc/systemd/system/",
             "sudo systemctl enable docker-tcp.socket",
-            "sudo systemctl start docker-tcp.socket",
-            "sudo mv /tmp/docker.service /etc/systemd/system/",
+            "sudo mv -f /tmp/etc-sysconfig-docker /etc/sysconfig/docker",
             "sudo systemctl enable docker.service",
-            "sudo systemctl start docker.service",
 
             "dd if=/dev/zero of=EMPTY bs=1M || :",
             "rm EMPTY"
