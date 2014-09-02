@@ -2,7 +2,7 @@
 
 Build a Vagrant box with [Fedora Atomic](http://www.projectatomic.io/)
 
-- Based on [Fedora Atomic 20140902 (e856a513d05e)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
+- Based on [Fedora Atomic 2014-09-02 21:09:12 (e856a513d0)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
 	- Fedora release 22 (Rawhide)
 	- kernel v3.17.0
 	- docker v1.2.0
