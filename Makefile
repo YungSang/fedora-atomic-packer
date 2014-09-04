@@ -36,6 +36,8 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	vagrant ssh -c "atomic status"; \
 	echo "-----> atomic upgrade fedora-atomic:"; \
 	vagrant ssh -c "sudo atomic upgrade fedora-atomic:"; \
+	echo '-----> docker-enter `sudo docker ps -l -q` ls -l'; \
+	vagrant ssh -c 'docker-enter `sudo docker ps -l -q` ls -l'; \
 	vagrant suspend
 
 clean:
