@@ -2,14 +2,16 @@
 
 Build a Vagrant box with [Fedora Atomic](http://www.projectatomic.io/)
 
-- Based on [Fedora Atomic 2014-09-02 21:09:12 (e856a513d0)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
+- Based on [Fedora Atomic 2014-09-04 21:43:54 (3836acd608)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
 	- Fedora release 22 (Rawhide)
 	- kernel v3.17.0
 	- docker v1.2.0
 	- systemd 216
 - Expose the official IANA registered Docker port 2375
 - Upgradable: `sudo atomic upgrade fedora-atomic:`
-- **357MB**
+- Adopt [toolbox](https://github.com/YungSang/toolbox/tree/sudo) from CoreOS to use systemd-nspawn easily
+- Adopt [docker-enter](https://github.com/YungSang/docker-attach) to use nsenter easily
+- **360MB**
 
 ## How to Build
 
@@ -58,6 +60,31 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network :forwarded_port, guest: 8080, host: 8080
 end
+```
+
+## Toolbox
+
+```
+[vagrant@fedora-atomic~]$ toolbox
+Pulling repository fedora
+88b42ffd1f7c: Download complete
+511136ea3c5a: Download complete
+c69cab00d6ef: Download complete
+vagrant-fedora-latest
+Spawning container vagrant-fedora-latest on /var/lib/toolbox/vagrant-fedora-latest.
+Press ^] three times within 1s to kill container.
+[root@fedora-atomic~]# 
+```
+
+## Docker-enter
+
+```
+[vagrant@fedora-atomic~]$ docker ps
+CONTAINER ID        IMAGE                     COMMAND                CREATED             STATUS              PORTS                    NAMES
+f88a6962f536        yungsang/busybox:latest   "nc -p 8080 -l -l -e   7 minutes ago       Up 7 minutes        0.0.0.0:8080->8080/tcp   simple-echo
+[vagrant@fedora-atomic~]$ docker-enter f88a6962f536 sh
+nsenter --target 3119 --mount --uts --ipc --net --pid -- sh
+/ # 
 ```
 
 ## License
