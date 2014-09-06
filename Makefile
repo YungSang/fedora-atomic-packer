@@ -41,8 +41,7 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	vagrant suspend
 
 clean:
-	rm -f boot.iso
 	rm -f fedora-atomic-virtualbox.box
-	rm -rf output-*/
+	rm -rf box/output-*/
 
 .PHONY: test clean
