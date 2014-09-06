@@ -1,6 +1,7 @@
 {
     "builders": [{
         "name": "virtualbox",
+        "vm_name": "fedora-atomic",
         "type": "virtualbox-iso",
         "guest_os_type": "Fedora_64",
         "iso_url": "../boot.iso",

@@ -22,7 +22,7 @@ fedora-atomic-parallels.box: fedora-atomic-virtualbox.box
 	@cd parallels; \
 	rm -f *; \
 	tar zxvf ../fedora-atomic-virtualbox.box; \
-	rm -f box.ovf packer-virtualbox-disk1.vmdk; \
+	rm -f box.ovf fedora-atomic-disk1.vmdk; \
 	echo '{"provider": "parallels"}' > metadata.json
 	#
 	# Convert VMDK to HDD
@@ -31,15 +31,15 @@ fedora-atomic-parallels.box: fedora-atomic-virtualbox.box
 	vagrant destroy -f
 	VM_NAME="${VM_NAME}" vagrant up
 	vagrant halt -f
-	rm -rf "${HOME}/Documents/Parallels/packer-virtualbox-disk1.hdd"
-	-prl_convert "${HOME}/VirtualBox VMs/${VM_NAME}/packer-virtualbox-disk1.vmdk" --allow-no-os
+	rm -rf "${HOME}/Documents/Parallels/fedora-atomic-disk1.hdd"
+	-prl_convert "${HOME}/VirtualBox VMs/${VM_NAME}/fedora-atomic-disk1.vmdk" --allow-no-os
 	vagrant destroy -f
 	#
 	# Create Parallels VM
 	#
 	prlctl create "${VM_NAME}" --ostype linux --distribution fedora-core --no-hdd
-	mv "${HOME}/Documents/Parallels/packer-virtualbox-disk1.hdd" "${HOME}/Documents/Parallels/${VM_NAME}.pvm/packer-parallels-disk1.hdd"
-	prlctl set "${VM_NAME}" --device-add hdd --image "${HOME}/Documents/Parallels/${VM_NAME}.pvm/packer-parallels-disk1.hdd"
+	mv "${HOME}/Documents/Parallels/fedora-atomic-disk1.hdd" "${HOME}/Documents/Parallels/${VM_NAME}.pvm/"
+	prlctl set "${VM_NAME}" --device-add hdd --image "${HOME}/Documents/Parallels/${VM_NAME}.pvm/fedora-atomic-disk1.hdd"
 	prlctl set "${VM_NAME}" --device-bootorder "hdd0 cdrom0"
 	#
 	# Clone
@@ -53,7 +53,7 @@ fedora-atomic-parallels.box: fedora-atomic-virtualbox.box
 	# Clean up
 	#
 	rm -f "parallels/${BOX_NAME}.pvm/config.pvs.backup"
-	rm -f "parallels/${BOX_NAME}.pvm/packer-parallels-disk1.hdd/DiskDescriptor.xml.Backup"
+	rm -f "parallels/${BOX_NAME}.pvm/fedora-atomic-disk1.hdd/DiskDescriptor.xml.Backup"
 	#
 	# Package
 	#
