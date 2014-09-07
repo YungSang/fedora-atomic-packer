@@ -1,6 +1,6 @@
 ID=fedora-atomic
 NAME="Fedora Atomic box for Vagrant"
-VERSION_ID=0.8.0
+VERSION_ID=0.9.0
 HOME_URL="https://vagrantcloud.com/yungsang/fedora-atomic"
 SUPPORT_URL="https://github.com/YungSang/fedora-atomic-packer"
 BUG_REPORT_URL="https://github.com/YungSang/fedora-atomic-packer/issues"
