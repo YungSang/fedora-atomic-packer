@@ -20,6 +20,7 @@
         "shutdown_command": "sudo systemctl poweroff",
         "guest_additions_mode": "disable",
         "disk_size": 40000,
+        "hard_drive_interface": "sata",
         "vboxmanage": [
             ["modifyvm", "{{.Name}}", "--memory", "1024"]
         ]
