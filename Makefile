@@ -129,6 +129,8 @@ ptestup: test/Vagrantfile fedora-atomic-parallels.box
 	vagrant up --provider parallels
 
 clean:
+	vagrant destroy -f
+	cd test; vagrant destroy -f
 	rm -f fedora-atomic-virtualbox.box
 	rm -rf box/output-*/
 	rm -f fedora-atomic-parallels.box
