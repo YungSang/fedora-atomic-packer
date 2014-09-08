@@ -40,13 +40,15 @@
             "chmod 700 ~/.ssh/",
             "chmod 600 ~/.ssh/authorized_keys",
 
-            "mkdir -p ~/bin",
-            "curl -fsSLo ~/bin/toolbox https://raw.githubusercontent.com/YungSang/toolbox/fedora-atomic/toolbox",
-            "chmod +x ~/bin/toolbox",
+            "sudo mv /tmp/opt_bin.sh /etc/profile.d/",
+            "sudo mkdir -p /opt/bin",
 
-            "curl -fsSLo ~/bin/docker-enter https://raw.githubusercontent.com/YungSang/docker-attach/master/docker-nsenter",
-            "chmod +x ~/bin/docker-enter",
-            "ln -s -f ~/bin/docker-enter ~/bin/docker-attach",
+            "sudo curl -fsSLo /opt/bin/toolbox https://raw.githubusercontent.com/YungSang/toolbox/fedora-atomic/toolbox",
+            "sudo chmod +x /opt/bin/toolbox",
+
+            "sudo curl -fsSLo /opt/bin/docker-enter https://raw.githubusercontent.com/YungSang/docker-attach/master/docker-nsenter",
+            "sudo chmod +x /opt/bin/docker-enter",
+            "sudo ln -s -f /opt/bin/docker-enter /opt/bin/docker-attach",
 
             "sudo mv /tmp/docker-tcp.socket /etc/systemd/system/",
             "sudo systemctl enable docker-tcp.socket",
