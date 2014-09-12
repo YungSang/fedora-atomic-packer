@@ -48,7 +48,7 @@
 
             "sudo curl -fsSLo /opt/bin/docker-enter https://raw.githubusercontent.com/YungSang/docker-attach/master/docker-nsenter",
             "sudo chmod +x /opt/bin/docker-enter",
-            "sudo ln -s -f /opt/bin/docker-enter /opt/bin/docker-attach",
+            "cd /opt/bin; sudo ln -s -f docker-enter docker-attach; cd ~/",
 
             "sudo mv /tmp/docker-tcp.socket /etc/systemd/system/",
             "sudo systemctl enable docker-tcp.socket",
