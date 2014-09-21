@@ -75,6 +75,8 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	vagrant ssh -c "cat /etc/redhat-release"; \
 	echo "-----> /etc/oem-release"; \
 	vagrant ssh -c "cat /etc/oem-release"; \
+	echo "-----> /etc/machine-id"; \
+	vagrant ssh -c "cat /etc/machine-id"; \
 	echo "-----> /etc/hostname"; \
 	vagrant ssh -c "cat /etc/hostname"; \
 	echo "-----> docker version"; \
@@ -103,6 +105,8 @@ ptest: ptestup
 	vagrant ssh -c "cat /etc/redhat-release"; \
 	echo "-----> /etc/oem-release"; \
 	vagrant ssh -c "cat /etc/oem-release"; \
+	echo "-----> /etc/machine-id"; \
+	vagrant ssh -c "cat /etc/machine-id"; \
 	echo "-----> /etc/hostname"; \
 	vagrant ssh -c "cat /etc/hostname"; \
 	echo "-----> docker version"; \
