@@ -16,11 +16,11 @@ fedora-atomic-virtualbox.box: boot.iso box/template.json box/vagrantfile.tpl \
 	@cd box; \
 	packer build -only virtualbox template.json
 
-fedora-atomic-parallels.box: fedora-atomic-virtualbox.box
+fedora-atomic-parallels.box: fedora-atomic-virtualbox.box Vagrantfile
 	rm -f fedora-atomic-parallels.box
 	mkdir -p parallels
 	@cd parallels; \
-	rm -f *; \
+	rm -rf *; \
 	tar zxvf ../fedora-atomic-virtualbox.box; \
 	rm -f box.ovf fedora-atomic-disk1.vmdk; \
 	echo '{"provider": "parallels"}' > metadata.json
