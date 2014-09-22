@@ -2,16 +2,16 @@
 
 Build a Vagrant box with [Fedora Atomic](http://www.projectatomic.io/)
 
-- Based on [Fedora Atomic 2014-09-04 21:43:54 (3836acd608)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
-	- Fedora release 22 (Rawhide)
-	- kernel v3.17.0
-	- docker v1.2.0
-	- systemd 216
+- Based on [Fedora Atomic 2014-09-17 19:35:54 (d8e60a7d3b)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
+  - Fedora release 22 (Rawhide)
+  - kernel v3.17.0
+  - docker v1.2.0
+  - systemd 216
 - Expose the official IANA registered Docker port 2375
-- Upgradable: `sudo atomic upgrade fedora-atomic:`
-- Adopt [toolbox](https://github.com/YungSang/toolbox/tree/sudo) from CoreOS to use systemd-nspawn easily
+- Upgradable: `sudo atomic upgrade`
+- Adopt [toolbox](https://github.caom/YungSang/toolbox/tree/fedora-atomic) from CoreOS to use systemd-nspawn easily
 - Adopt [docker-enter](https://github.com/YungSang/docker-attach) to use nsenter easily
-- **360MB**
+- **353MB**
 
 ## How to Build
 
