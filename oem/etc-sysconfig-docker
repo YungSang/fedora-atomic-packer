@@ -1,1 +1,1 @@
-OPTIONS=--selinux-enabled --storage-opt dm.fs=xfs
+OPTIONS=--selinux-enabled
