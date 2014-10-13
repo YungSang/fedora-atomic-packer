@@ -4,7 +4,7 @@ Documentation=man:systemd-machine-id-setup(1)
 DefaultDependencies=no
 Conflicts=shutdown.target
 After=systemd-readahead-collect.service systemd-readahead-replay.service systemd-remount-fs.service systemd-sysusers.service
-Before=sysinit.target shutdown.target
+Before=sysinit.target shutdown.target systemd-journald.service
 ConditionPathIsReadWrite=/etc
 ConditionPathExists=!/etc/machine-id
 
