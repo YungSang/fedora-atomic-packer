@@ -12,9 +12,6 @@ ConditionPathExists=!/etc/machine-id
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=/usr/bin/systemd-machine-id-setup
-StandardOutput=tty
-StandardInput=tty
-StandardError=tty
 
 [Install]
 WantedBy=sysinit.target
