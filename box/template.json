@@ -14,7 +14,7 @@
             "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/atomic-ks.cfg",
             "<enter>"
         ],
-        "ssh_wait_timeout": "60m",
+        "ssh_wait_timeout": "180m",
         "ssh_username": "vagrant",
         "ssh_password": "vagrant",
         "shutdown_command": "sudo systemctl poweroff",
