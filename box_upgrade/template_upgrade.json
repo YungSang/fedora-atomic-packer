@@ -23,14 +23,13 @@
     },
     {
         "type": "file",
+        "pause_before": "15s",
         "source": "../oem/",
         "destination": "/tmp"
     },
     {
         "type": "shell",
-        "pause_before": "10s",
         "inline": [
-            "sleep 5",
             "sudo mv /tmp/oem-release /etc/",
             "ostree admin status",
             "sudo ostree admin undeploy 1 || true",
