@@ -6,7 +6,7 @@ module VagrantPlugins
       class ChangeHostName
         def self.change_host_name(machine, name)
           machine.communicate.tap do |comm|
-            comm.sudo("hostnamectl set-hostname #{name.split('.').first}")
+            comm.sudo("hostnamectl set-hostname #{name}")
           end
         end
       end
@@ -22,7 +22,7 @@ module VagrantPlugins
       class ChangeHostName
         def self.change_host_name(machine, name)
           machine.communicate.tap do |comm|
-            comm.sudo("hostnamectl set-hostname #{name.split('.').first}")
+            comm.sudo("hostnamectl set-hostname #{name}")
           end
         end
       end
