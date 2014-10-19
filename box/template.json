@@ -74,5 +74,6 @@
         ],
         "vagrantfile_template": "vagrantfile.tpl",
         "output": "../fedora-atomic-{{.Provider}}.box"
+        "keep_input_artifact": true,
     }]
 }
