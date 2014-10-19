@@ -1,0 +1,47 @@
+{
+    "builders": [{
+        "name": "virtualbox",
+        "vm_name": "fedora-atomic",
+        "type": "virtualbox-ovf",
+        "guest_os_type": "Fedora_64",
+        "ssh_wait_timeout": "180m",
+        "ssh_username": "vagrant",
+        "ssh_password": "vagrant",
+        "shutdown_command": "sudo systemctl poweroff",
+        "guest_additions_mode": "disable",
+        "disk_size": 40960,
+        "hard_drive_interface": "sata",
+        "vboxmanage": [
+            ["modifyvm", "{{.Name}}", "--memory", "1024"]
+        ]
+    }],
+
+    "provisioners": [{
+        "type": "shell",
+        "inline": [
+            "sudo atomic upgrade",
+            "sudo systemctl restart"
+        ]
+    },{
+        "type": "shell",
+        "inline": [
+            "ostree admin undeploy 1",
+            "dd if=/dev/zero of=EMPTY bs=1M || :",
+            "rm EMPTY"
+        ]
+
+    }],
+
+    "post-processors": [{
+        "type": "vagrant",
+        "include": [
+            "docker_start_service.rb",
+            "change_host_name.rb",
+            "configure_networks.rb",
+            "network_static.erb"
+        ],
+        "vagrantfile_template": "vagrantfile.tpl",
+        "keep_input_artifact": true,
+        "output": "../fedora-atomic-{{.Provider}}.box"
+    }]
+}
