@@ -20,12 +20,14 @@
             "sudo atomic upgrade",
             "sudo /sbin/reboot"
         ]
-    }],
-    "provisioners": [{
+    },
+    {
         "type": "shell",
-        "pause_before": "20s",
+        "pause_before": "10s",
         "inline": [
-            "ostree admin undeploy 1 || true ",
+            "sleep 5",
+            "ostree admin status",
+            "sudo ostree admin undeploy 1 || true ",
             "dd if=/dev/zero of=EMPTY bs=1M || :",
             "rm EMPTY"
         ]
