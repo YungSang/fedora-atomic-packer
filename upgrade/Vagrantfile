@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define "fedora-atomic-upgrade"
+
+  config.vm.box = "yungsang/fedora-atomic"
+
+  config.vm.provider :virtualbox do |vb|
+    vb.name = "Fedora Atomic Upgrade"
+  end
+
+  config.vm.provision :file, source: "../oem/oem-release", destination: "/tmp/oem-release"
+
+  config.vm.provision :shell do |sh|
+    sh.privileged = true
+    sh.inline = <<-EOT
+      mv -f /tmp/oem-release /etc/
+      atomic upgrade
+    EOT
+  end
+end

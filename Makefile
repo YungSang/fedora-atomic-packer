@@ -132,12 +132,30 @@ ptestup: test/Vagrantfile fedora-atomic-parallels.box
 	vagrant destroy -f; \
 	vagrant up --provider parallels
 
+upgrade: upgrade/Vagrantfile \
+	box/docker_start_service.rb box/change_host_name.rb box/configure_networks.rb \
+	box/network_static.erb oem/oem-release
+	mkdir -p upgrade
+	cd upgrade; \
+		vagrant destroy -f; \
+		vagrant up; \
+		vagrant reload; \
+		vagrant ssh -c 'sudo ostree admin undeploy 1'; \
+		vagrant ssh -c 'sudo ostree admin cleanup'; \
+		vagrant ssh -c 'sudo rm -f /etc/machine-id'; \
+		vagrant ssh -c 'dd if=/dev/zero of=EMPTY bs=1M || :; rm EMPTY'; \
+		vagrant halt -f;
+	cd box; \
+		rm -f ../fedora-atomic-virtualbox.box; \
+		vagrant package --base "Fedora Atomic Upgrade" --output ../fedora-atomic-virtualbox.box --include docker_start_service.rb,change_host_name.rb,configure_networks.rb,network_static.erb --vagrantfile vagrantfile.tpl
+
 clean:
 	vagrant destroy -f
 	cd test; vagrant destroy -f
+	cd upgrade; vagrant destroy -f
 	rm -f fedora-atomic-virtualbox.box
 	rm -rf box/output-*/
 	rm -f fedora-atomic-parallels.box
 	rm -rf parallels/
 
-.PHONY: test clean
+.PHONY: test clean upgrade
