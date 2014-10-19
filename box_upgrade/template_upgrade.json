@@ -18,7 +18,7 @@
         "type": "shell",
         "inline": [
             "sudo atomic upgrade",
-            "sudo /sbin/reboot"
+            "sudo systemctl reboot"
         ]
     },
     {
@@ -31,7 +31,7 @@
         "type": "shell",
         "inline": [
             "sudo mv /tmp/oem-release /etc/",
-            "ostree admin status",
+            "atomic status",
             "sudo ostree admin undeploy 1 || true",
             "sudo rm /etc/machine-id",
             "dd if=/dev/zero of=EMPTY bs=1M || :",
