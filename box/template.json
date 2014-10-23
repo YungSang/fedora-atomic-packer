@@ -46,10 +46,6 @@
             "sudo curl -fsSLo /opt/bin/toolbox https://raw.githubusercontent.com/YungSang/toolbox/fedora-atomic/toolbox",
             "sudo chmod +x /opt/bin/toolbox",
 
-            "sudo curl -fsSLo /opt/bin/docker-enter https://raw.githubusercontent.com/YungSang/docker-attach/master/docker-nsenter",
-            "sudo chmod +x /opt/bin/docker-enter",
-            "cd /opt/bin; sudo ln -s -f docker-enter docker-attach; cd ~/",
-
             "sudo mv /tmp/docker-tcp.socket /etc/systemd/system/",
             "sudo systemctl enable docker-tcp.socket",
             "sudo mv -f /tmp/etc-sysconfig-docker /etc/sysconfig/docker",

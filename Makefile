@@ -92,8 +92,8 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	vagrant ssh -c "atomic status"; \
 	echo "-----> atomic upgrade"; \
 	vagrant ssh -c "sudo atomic upgrade"; \
-	echo '-----> docker-enter `sudo docker ps -l -q` ls -l'; \
-	vagrant ssh -c 'docker-enter `sudo docker ps -l -q` ls -l'; \
+	echo '-----> docker exec `sudo docker ps -l -q` ls -l'; \
+	vagrant ssh -c 'sudo docker exec `sudo docker ps -l -q` ls -l'; \
 	vagrant suspend
 
 ptest: DOCKER_HOST_IP=$(shell cd test; vagrant ssh-config | sed -n "s/[ ]*HostName[ ]*//gp")
