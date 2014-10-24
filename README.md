@@ -2,16 +2,20 @@
 
 Build a Vagrant box with [Fedora Atomic](http://www.projectatomic.io/)
 
-- Based on [Fedora Atomic 2014-09-17 19:35:54 (d8e60a7d3b)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
-  - Fedora release 22 (Rawhide)
-  - kernel v3.17.0
-  - docker v1.2.0
-  - systemd 216
+- Based on [Fedora Atomic 2014-10-23 22:56:41 (b794869ae3)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
+	- fedora-release-22-0.8.noarch
+	- **kernel-3.18.0-0.rc1.git2.1.fc22.x86_64**
+	- systemd-216-11.fc22.x86_64
+	- bash-4.3.30-2.fc22.x86_64
+	- openssl-1:1.0.1j-1.fc22.x86_64
+	- **docker-io-1.3.0-1.fc22.x86_64**
+	- cadvisor-0.4.1-0.1.git6906a8c.fc22.x86_64
+	- etcd-0.4.6-7.fc22.x86_64 (etcdctl is missing.)
+	- **kubernetes-0.4-0.4.git97dd730.fc22.x86_64**
 - Expose the official IANA registered Docker port 2375
 - Upgradable: `sudo atomic upgrade`
 - Adopt [toolbox](https://github.caom/YungSang/toolbox/tree/fedora-atomic) from CoreOS to use systemd-nspawn easily
-- Adopt [docker-enter](https://github.com/YungSang/docker-attach) to use nsenter easily
-- **353MB**
+- **378MB**
 
 ## How to Build
 
@@ -65,7 +69,7 @@ end
 ## Toolbox
 
 ```
-[vagrant@fedora-atomic~]$ toolbox
+[vagrant@fedora-atomic ~]$ toolbox
 Pulling repository fedora
 88b42ffd1f7c: Download complete
 511136ea3c5a: Download complete
@@ -73,17 +77,16 @@ c69cab00d6ef: Download complete
 vagrant-fedora-latest
 Spawning container vagrant-fedora-latest on /var/lib/toolbox/vagrant-fedora-latest.
 Press ^] three times within 1s to kill container.
-[root@fedora-atomic~]# 
+[root@fedora-atomic ~]# 
 ```
 
-## Docker-enter
+## Docker exec
 
 ```
-[vagrant@fedora-atomic~]$ docker ps
+[vagrant@fedora-atomic ~]$ sudo docker ps
 CONTAINER ID        IMAGE                     COMMAND                CREATED             STATUS              PORTS                    NAMES
 f88a6962f536        yungsang/busybox:latest   "nc -p 8080 -l -l -e   7 minutes ago       Up 7 minutes        0.0.0.0:8080->8080/tcp   simple-echo
-[vagrant@fedora-atomic~]$ docker-enter f88a6962f536 sh
-nsenter --target 3119 --mount --uts --ipc --net --pid -- sh
+[vagrant@fedora-atomic ~]$ sudo docker exec -it f88a6962f536 sh
 / # 
 ```
 
