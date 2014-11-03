@@ -90,8 +90,6 @@ test: test/Vagrantfile fedora-atomic-virtualbox.box
 	nc localhost 8080; \
 	echo "-----> atomic status"; \
 	vagrant ssh -c "atomic status"; \
-	echo "-----> atomic upgrade"; \
-	vagrant ssh -c "sudo atomic upgrade"; \
 	echo '-----> docker exec `docker ps -l -q` ls -l'; \
 	docker exec `docker ps -l -q` ls -l; \
 	vagrant suspend
@@ -120,8 +118,6 @@ ptest: ptestup
 	nc ${DOCKER_HOST_IP} 8080; \
 	echo "-----> atomic status"; \
 	vagrant ssh -c "atomic status"; \
-	echo "-----> atomic upgrade"; \
-	vagrant ssh -c "sudo atomic upgrade"; \
 	echo '-----> docker exec `docker ps -l -q` ls -l'; \
 	docker exec `docker ps -l -q` ls -l; \
 	vagrant suspend
