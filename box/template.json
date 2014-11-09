@@ -22,7 +22,15 @@
         "disk_size": 40960,
         "hard_drive_interface": "sata",
         "vboxmanage": [
-            ["modifyvm", "{{.Name}}", "--memory", "1024"]
+            ["modifyvm", "{{.Name}}", "--memory", "1024"],
+            ["modifyvm", "{{.Name}}", "--nictype1", "virtio"],
+            ["modifyvm", "{{.Name}}", "--nictype2", "virtio"],
+            ["modifyvm", "{{.Name}}", "--nictype3", "virtio"],
+            ["modifyvm", "{{.Name}}", "--nictype4", "virtio"],
+            ["modifyvm", "{{.Name}}", "--nictype5", "virtio"],
+            ["modifyvm", "{{.Name}}", "--nictype6", "virtio"],
+            ["modifyvm", "{{.Name}}", "--nictype7", "virtio"],
+            ["modifyvm", "{{.Name}}", "--nictype8", "virtio"]
         ]
     }],
 
