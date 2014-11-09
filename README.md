@@ -2,25 +2,27 @@
 
 Build a Vagrant box with [Fedora Atomic](http://www.projectatomic.io/)
 
-- Based on [Fedora Atomic 2014-11-01 23:56:58 (ca6df02dd2)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
+- Based on [Fedora Atomic 2014-11-08 22:28:12 (f9680a9c70)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
 	- fedora-release-22-0.8.noarch
-	- **kernel-3.18.0-0.rc2.git3.1.fc22.x86_64**
-	- **systemd-217-2.fc22.x86_64**
-	- NetworkManager-1:0.9.10.0-11.git20140704.fc22.x86_64
+	- **kernel-3.18.0-0.rc3.git4.1.fc22.x86_64**
+	- **systemd-217-4.fc22.x86_64**
+	- **NetworkManager-1:0.9.10.0-13.git20140704.fc22.x86_64**
 	- device-mapper-persistent-data-0.4.1-1.fc22.x86_64
 	- ostree-2014.11-1.fc22.x86_64
 	- rpm-ostree-2014.109-1.fc22.x86_64
 	- bash-4.3.30-2.fc22.x86_64
 	- openssl-1:1.0.1j-1.fc22.x86_64
-	- **docker-io-1.3.1-2.fc22.x86_64**
+  - **nfs-utils-1:1.3.1-2.2.fc22.x86_64**
+  - **cloud-init-0.7.5-8.fc22.x86_64**
+	- docker-io-1.3.1-2.fc22.x86_64
 	- cadvisor-0.4.1-0.1.git6906a8c.fc22.x86_64
 	- etcd-0.4.6-7.fc22.x86_64 (etcdctl is missing.)
-	- **kubernetes-0.4+-426.0.gita18cdac.fc22.x86_64**
+	- **kubernetes-0.4-595.0.gitb695650.fc22.x86_64**
 	- git-2.1.0-5.fc22.x86_64
 - Expose the official IANA registered Docker port 2375
 - Upgradable: `sudo atomic upgrade`
 - Adopt [toolbox](https://github.caom/YungSang/toolbox/tree/fedora-atomic) from CoreOS to use systemd-nspawn easily
-- **372MB**
+- **454MB**
 
 ## How to Build
 
