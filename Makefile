@@ -7,7 +7,7 @@ virtualbox: fedora-atomic-virtualbox.box
 
 parallels: fedora-atomic-parallels.box
 
-fedora-atomic-virtualbox.box: boot.iso box/template.json box/vagrantfile.tpl \
+fedora-atomic-virtualbox.box: installer.iso box/template.json box/vagrantfile.tpl \
 	box/docker_start_service.rb box/change_host_name.rb box/configure_networks.rb \
 	box/network_static.erb \
 	http/atomic-ks.cfg oem/etc-sysconfig-docker oem/docker-tcp.socket oem/oem-release
@@ -61,8 +61,8 @@ fedora-atomic-parallels.box: fedora-atomic-virtualbox.box Vagrantfile
 	cd parallels; tar zcvf ../fedora-atomic-parallels.box *
 	prlctl unregister "${BOX_NAME}"
 
-boot.iso:
-	curl -LO http://rpm-ostree.cloud.fedoraproject.org/project-atomic/install/rawhide/20140708.0/boot.iso
+installer.iso:
+	curl -LO http://dl.fedoraproject.org/pub/alt/fedora-atomic/testing/rawhide/20141104.0/installer/images/installer.iso
 
 test: test/Vagrantfile fedora-atomic-virtualbox.box
 	@vagrant box add -f fedora-atomic fedora-atomic-virtualbox.box

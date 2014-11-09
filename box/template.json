@@ -4,7 +4,7 @@
         "vm_name": "fedora-atomic",
         "type": "virtualbox-iso",
         "guest_os_type": "Fedora_64",
-        "iso_url": "../boot.iso",
+        "iso_url": "../installer.iso",
         "iso_checksum_type": "none",
         "http_directory": "../http",
         "boot_wait": "5s",
