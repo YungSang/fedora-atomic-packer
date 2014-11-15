@@ -21,7 +21,7 @@ Build a Vagrant box with [Fedora Atomic](http://www.projectatomic.io/)
 	- git-2.1.0-5.fc22.x86_64
 - Expose the official IANA registered Docker port 2375
 - Upgradable: `sudo atomic upgrade`
-- Adopt [toolbox](https://github.caom/YungSang/toolbox/tree/fedora-atomic) from CoreOS to use systemd-nspawn easily
+- Adopt [toolbox](https://github.com/YungSang/toolbox/tree/fedora-atomic) from CoreOS to use systemd-nspawn easily
 - **454MB**
 
 ## How to Build
