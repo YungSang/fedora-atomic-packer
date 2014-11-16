@@ -23,6 +23,7 @@ Build a Vagrant box with [Fedora Atomic](http://www.projectatomic.io/)
 - Expose the official IANA registered Docker port 2375
 - Upgradable: `sudo atomic upgrade`
 - Adopt [toolbox](https://github.com/YungSang/toolbox/tree/fedora-atomic) from CoreOS to use systemd-nspawn easily
+- Support NFS synced folder
 - **442MB**
 
 ## How to Build
@@ -61,6 +62,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 2375, host: 2375
 
   config.vm.network :private_network, ip: "192.168.33.10"
+
+  config.vm.synced_folder ".", "/opt/vagrant", type: "nfs", mount_options: ["nolock", "vers=3", "udp"]
 
   config.vm.provision :docker do |d|
     d.pull_images "yungsang/busybox"
