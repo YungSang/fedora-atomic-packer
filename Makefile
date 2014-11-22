@@ -9,8 +9,8 @@ parallels: fedora-atomic-parallels.box
 
 fedora-atomic-virtualbox.box: installer.iso box/template.json box/vagrantfile.tpl \
 	box/docker_start_service.rb box/change_host_name.rb box/configure_networks.rb \
-	box/network_static.erb \
-	http/atomic-ks.cfg oem/etc-sysconfig-docker oem/docker-tcp.socket oem/oem-release
+	box/network_static.erb http/atomic-ks.cfg oem/docker.socket oem/docker-tcp.socket \
+	oem/oem-release oem/opt_bin.sh oem/systemd-machine-id-setup.service
 	rm -f fedora-atomic-virtualbox.box
 	rm -rf box/output-virtualbox/
 	@cd box; \
