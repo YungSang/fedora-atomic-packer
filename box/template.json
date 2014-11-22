@@ -57,7 +57,6 @@
             "sudo mv /tmp/docker-tcp.socket /etc/systemd/system/",
             "sudo systemctl enable docker-tcp.socket",
             "sudo mv -f /tmp/etc-sysconfig-docker /etc/sysconfig/docker",
-            "sudo systemctl enable docker.service",
 
             "sudo mv -f /tmp/systemd-machine-id-setup.service /etc/systemd/system/",
             "sudo systemctl enable systemd-machine-id-setup.service",
