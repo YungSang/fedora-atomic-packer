@@ -60,10 +60,7 @@
 
             "sudo mv -f /tmp/systemd-machine-id-setup.service /etc/systemd/system/",
             "sudo systemctl enable systemd-machine-id-setup.service",
-            "sudo rm -f /etc/machine-id",
-
-            "dd if=/dev/zero of=EMPTY bs=1M || :",
-            "rm EMPTY"
+            "sudo rm -f /etc/machine-id"
         ]
     }],
 
