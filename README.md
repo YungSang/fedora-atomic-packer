@@ -2,31 +2,32 @@
 
 Build a Vagrant box with [Fedora Atomic](http://www.projectatomic.io/)
 
-- Based on [Fedora Atomic 2014-12-06 03:32:20 (e46b8c1cf9)](http://dl.fedoraproject.org/pub/alt/fedora-atomic/repo/refs/heads/fedora-atomic/rawhide/x86_64/)
-  - fedora-release-22-0.10.noarch
-  - **kernel-3.18.0-0.rc7.git2.1.fc22.x86_64**
-  - **grub2-1:2.02-0.12.fc22.x86_64**
-  - **dbus-1:1.8.12-1.fc22.x86_64**
-  - systemd-217-4.fc22.x86_64
-  - **NetworkManager-1:0.9.10.0-14.git20140704.fc22.x86_64**
-  - **device-mapper-1.02.92-3.fc22.x86_64**
-  - **ostree-2014.12-1.fc22.x86_64**
-  - **rpm-ostree-2014.113-1.fc22.x86_64**
-  - bash-4.3.30-2.fc22.x86_64
-  - openssl-1:1.0.1j-3.fc22.x86_64
-  - nfs-utils-1:1.3.1-2.3.fc22.x86_64
-  - cloud-init-0.7.6-2.fc22.x86_64
-  - **docker-io-1.3.2-4.git353ff40.fc22.x86_64**
-  - cadvisor-0.5.0-0.0.git8c4f650.fc22.x86_64
-  - **cockpit-0.33-1.fc22.x86_64**
-  - etcd-0.4.6-7.fc22.x86_64 (etcdctl is missing.)
-  - **kubernetes-0.6-4.0.git993ef88.fc22.x86_64**
-  - **<del>git-2.1.0-5.fc22.x86_64</del>**
+- Based on [Fedora Atomic 2014-12-13 11:14:55 (bea2d675ea)](http://download.fedoraproject.org/pub/fedora/linux/atomic/rawhide/refs/heads/fedora-atomic/rawhide/x86_64/)
+ 	- fedora-release-22-0.10.noarch
+	- kernel-3.18.0-1.fc22.x86_64
+	- grub2-1:2.02-0.13.fc22.x86_64
+	- dbus-1:1.8.12-2.fc22.x86_64
+	- systemd-218-1.fc22.x86_64
+	- NetworkManager-1:0.9.10.0-14.git20140704.fc22.x86_64
+	- device-mapper-1.02.92-3.fc22.x86_64
+	- ostree-2014.12-1.fc22.x86_64
+	- rpm-ostree-2014.113-1.fc22.x86_64
+	- bash-4.3.30-2.fc22.x86_64
+	- openssl-1:1.0.1j-3.fc22.x86_64
+	- nfs-utils-1:1.3.1-2.3.fc22.x86_64
+	- cloud-init-0.7.6-2.fc22.x86_64
+	- **docker-io-1.4.0-2.fc22.x86_64**
+	- cadvisor-0.6.2-0.0.git89088df.fc22.x86_64
+	- **cockpit-0.34-1.fc22.x86_64**
+	- etcd-0.4.6-7.fc22.x86_64 (etcdctl is missing.)
+	- kubernetes-0.6-4.0.git993ef88.fc22.x86_64
+	- <del>git-2.1.0-5.fc22.x86_64</del>
+	- flannel-0.1.0-8.gita7b435a.fc22.x86_64
 - Expose the official IANA registered Docker port 2375
 - Upgradable: `sudo atomic upgrade`
 - Adopt [toolbox](https://github.com/YungSang/toolbox/tree/fedora-atomic) from CoreOS to use systemd-nspawn easily
 - Support NFS synced folder
-- **423MB**
+- **413MB**
 
 ## How to Build
 
