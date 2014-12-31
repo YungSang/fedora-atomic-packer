@@ -76,6 +76,7 @@
             "network_static.erb"
         ],
         "vagrantfile_template": "vagrantfile.tpl",
+        "keep_input_artifact": true,
         "output": "../fedora-atomic-{{.Provider}}.box"
     }]
 }
